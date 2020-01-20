@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel
 {
@@ -55,9 +56,9 @@ namespace WeatherApp.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        // implement default constructor to display default information
         public WeatherViewModel()
         {
+            // implement default constructor to display default information
             if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
             {
                 SelectedCity = new City
@@ -77,6 +78,11 @@ namespace WeatherApp.ViewModel
                     }
                 };
             }
+        }
+
+        public async void MakeQuery()
+        {
+            var cities = await AccWeatherHelper.GetCities(Query);
         }
     }
 }
