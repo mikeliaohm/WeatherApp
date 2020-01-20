@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherApp.Model;
+using WeatherApp.ViewModel.Commands;
 using WeatherApp.ViewModel.Helpers;
 
 namespace WeatherApp.ViewModel
@@ -45,6 +46,8 @@ namespace WeatherApp.ViewModel
             }
         }
 
+        public SearchCommand SearchCommand { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -78,6 +81,8 @@ namespace WeatherApp.ViewModel
                     }
                 };
             }
+
+            SearchCommand = new SearchCommand(this);
         }
 
         public async void MakeQuery()
