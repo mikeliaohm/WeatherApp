@@ -44,8 +44,6 @@ namespace WeatherApp.ViewModel
             }
         }
 
-
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -55,6 +53,30 @@ namespace WeatherApp.ViewModel
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        // implement default constructor to display default information
+        public WeatherViewModel()
+        {
+            if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
+            {
+                SelectedCity = new City
+                {
+                    LocalizedName = "New York"
+                };
+
+                CurrentConditions = new CurrentConditions
+                {
+                    WeatherText = "Partly cloudy",
+                    Temperature = new Temperature
+                    {
+                        Metric = new Units
+                        {
+                            Value = 21
+                        }
+                    }
+                };
+            }
         }
     }
 }
