@@ -82,7 +82,8 @@ namespace WeatherApp.ViewModel
                         {
                             Value = "21"
                         }
-                    }
+                    },
+                    HasPrecipitation = true
                 };
             }
 
